@@ -1,0 +1,3 @@
+#!/bin/bash
+# Usage: CFILE=yourfile.c ./2-assembler
+gcc -S "$CFILE"

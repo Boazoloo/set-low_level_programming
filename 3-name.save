@@ -1,0 +1,3 @@
+cisfun#!/bin/bashcisfun#!/bin/bash#!/bin/bash
+# Usage: CFILE=yourfile.c ./3-name
+gcc "$CFILE" -o cisfunnano 3-name
