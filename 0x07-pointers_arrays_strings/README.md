@@ -1,4 +1,4 @@
-# 0x07. C - Even more pointers, arrays and strings
+# 0x07. C - Even More Pointers, Arrays and Strings
 
 This project focuses on advanced pointer manipulation, memory functions,
 and string handling in C. You will practice working with:
@@ -24,6 +24,8 @@ and string handling in C. You will practice working with:
 - No global variables
 - Maximum 5 functions per file
 - Use only `_putchar` for output, do not push `_putchar.c`
-- All prototypes in `main.h`
+- All prototypes must be in `main.h`
 
+## Author
 
+Boaz Oloo
