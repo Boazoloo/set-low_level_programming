@@ -1,0 +1,3 @@
+[submodule "0x09-static_libraries"]
+	path = 0x09-static_libraries
+	url = https://github.com/Boazoloo/0x09-static_libraries.git
