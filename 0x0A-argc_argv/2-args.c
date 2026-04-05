@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * main - prints all arguments it receives, one per line
+ * main - prints all arguments it receives
  * @argc: argument count
  * @argv: argument vector
  *
@@ -9,15 +9,19 @@
  */
 int main(int argc, char *argv[])
 {
-    int i, j;
+	int i, j;
 
-    for (i = 0; i < argc; i++)
-    {
-        for (j = 0; argv[i][j] != '\0'; j++)
-            _putchar(argv[i][j]);
-        _putchar('\n');
-    }
+	for (i = 0; i < argc; i++)
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			_putchar(argv[i][j]);
+			j++;
+		}
+		_putchar('\n');
+	}
 
-    return (0);
+	return (0);
 }
 
