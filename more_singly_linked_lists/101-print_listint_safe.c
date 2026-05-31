@@ -1,103 +1,35 @@
-#include "lists.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include "lists.h"
 
 /**
- * print_listint_safe - prints a list safely even if it has a loop
- * @head: pointer to list
+ * print_listint_safe - prints a listint_t linked list safely
+ * @head: pointer to first node
  *
  * Return: number of nodes printed
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *current;
-	const listint_t *tmp;
-	size_t count = 0;
+	const listint_t *nodes[1024];
+	size_t i, count = 0;
 
-	current = head;
-
-	while (current != NULL)
+	while (head != NULL)
 	{
-		tmp = head;
-
-		/* check if node already printed */
-		while (tmp != current)
+		for (i = 0; i < count; i++)
 		{
-			if (tmp == current)
+			if (nodes[i] == head)
 			{
-				printf("-> [%p] %d\n", (void *)current, current->n);
+				printf("-> [%p] %d\n", (void *)head, head->n);
 				return (count);
 			}
-			tmp = tmp->next;
 		}
 
-		printf("[%p] %d\n", (void *)current, current->n);
+		nodes[count] = head;
+		printf("[%p] %d\n", (void *)head, head->n);
 		count++;
 
-		/* check loop manually */
-		if (current->next != NULL)
-		{
-			const listint_t *checker = head;
-
-			while (checker != current->next && checker != current)
-				checker = checker->next;
-
-			if (checker == current->next)
-			{
-				current = current->next;
-				continue;
-			}
-		}
-
-		current = current->next;
+		head = head->next;
 	}
 
 	return (count);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
