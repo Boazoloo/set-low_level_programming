@@ -3,45 +3,101 @@
 #include <stdlib.h>
 
 /**
- * print_listint_safe - prints a listint_t list safely (handles loops)
- * @head: pointer to the head of the list
+ * print_listint_safe - prints a list safely even if it has a loop
+ * @head: pointer to list
  *
  * Return: number of nodes printed
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *slow;
-	const listint_t *fast;
+	const listint_t *current;
+	const listint_t *tmp;
 	size_t count = 0;
 
-	if (head == NULL)
-		return (0);
+	current = head;
 
-	slow = head;
-	fast = head;
-
-	while (slow != NULL && fast != NULL && fast->next != NULL)
+	while (current != NULL)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		count++;
+		tmp = head;
 
-		slow = slow->next;
-		fast = fast->next->next;
-
-		if (slow == fast)
+		/* check if node already printed */
+		while (tmp != current)
 		{
-			printf("-> [%p] %d\n", (void *)slow, slow->n);
-			return (count);
+			if (tmp == current)
+			{
+				printf("-> [%p] %d\n", (void *)current, current->n);
+				return (count);
+			}
+			tmp = tmp->next;
 		}
-	}
 
-	while (slow != NULL)
-	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
+		printf("[%p] %d\n", (void *)current, current->n);
 		count++;
-		slow = slow->next;
+
+		/* check loop manually */
+		if (current->next != NULL)
+		{
+			const listint_t *checker = head;
+
+			while (checker != current->next && checker != current)
+				checker = checker->next;
+
+			if (checker == current->next)
+			{
+				current = current->next;
+				continue;
+			}
+		}
+
+		current = current->next;
 	}
 
 	return (count);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
